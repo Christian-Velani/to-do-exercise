@@ -1,0 +1,17 @@
+.grid {
+    width: 39.785rem;
+    height: 3.375rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: -5px;
+}
+
+.textField {
+    background: var(--gray-500);
+    outline-color: var(--gray-700);
+}
+
+.button {
+    width: 5.625rem;
+    height: 3.25rem;
+}

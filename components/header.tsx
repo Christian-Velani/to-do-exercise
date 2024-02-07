@@ -1,4 +1,3 @@
-import AppBar from '@mui/material/AppBar';
 import Image from 'next/image';
 import rocketImage from "/images/rocket.svg";
 import styles from "./header.module.css";
