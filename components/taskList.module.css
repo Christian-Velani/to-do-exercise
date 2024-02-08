@@ -1,0 +1,12 @@
+.gridItem1 {
+    color: var(--blue);
+}
+
+.gridItem2 {
+    color: var(--purple);
+}
+
+.box {
+    background: var(--gray-400);
+    color: var(--gray-200);
+}

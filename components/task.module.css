@@ -2,11 +2,14 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     background-color: var(--gray-500);
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .p {
     white-space: wrap;
-    max-width: 500px;
+    max-width: 31.25rem;
+    font-family: --font-inter;
+    font-size: 0.875rem;
+    color: var(--gray-100);
+    margin-top: 0.625rem;
 }

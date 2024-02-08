@@ -8,15 +8,27 @@ import styles from './task.module.css'
 
 export function Task(props: any) {
     return (
-        <Grid sx={{ width: "46rem" }} className={styles.grid} container spacing={2}>
+        <Grid sx={{ width: "46rem", borderRadius: "0.5rem" }} className={styles.grid} container spacing={2}>
             <Grid item>
                 <CheckBox
                     icon={
-                        <RadioButtonUncheckedIcon />
+                        <RadioButtonUncheckedIcon sx=
+                            {
+                                {
+                                    fontSize: '1.5rem',
+                                    color: "#4EA8DE",
+                                }
+                            } />
                     }
                     checkedIcon=
                     {
-                        <CheckCircleIcon />
+                        <CheckCircleIcon sx=
+                            {
+                                {
+                                    color: "#5E60CE",
+                                    fontSize: "1.5rem",
+                                }
+                            } />
                     } />
             </Grid>
             <Grid item>
@@ -26,7 +38,13 @@ export function Task(props: any) {
             </Grid>
             <Grid item>
                 <IconButton>
-                    <DeleteForeverOutlinedIcon />
+                    <DeleteForeverOutlinedIcon sx=
+                        {
+                            {
+                                fontSize: "1.5rem",
+                                color: "#808080",
+                            }
+                        } />
                 </IconButton>
             </Grid>
         </Grid>

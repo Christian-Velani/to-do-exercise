@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
-const inter = Inter({ subsets: ["latin"], weight: ["900"] });
+const inter = Inter({ subsets: ["latin"], weight: ["900", "400", "700"], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: "Create Next App",
