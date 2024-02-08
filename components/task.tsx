@@ -5,12 +5,20 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import IconButton from '@mui/material/IconButton';
 import styles from './task.module.css'
+import { useState } from 'react';
+
 
 export function Task(props: any) {
+    const [checked, isChecked] = useState(false);
+
+    function handleCheckBoxChange() {
+        checked ? isChecked(false) : isChecked(true);
+    }
+
     return (
         <Grid sx={{ width: "46rem", borderRadius: "0.5rem" }} className={styles.grid} container spacing={2}>
             <Grid item>
-                <CheckBox
+                <CheckBox onChange={handleCheckBoxChange} checked={checked ? true : false}
                     icon={
                         <RadioButtonUncheckedIcon sx=
                             {
@@ -32,8 +40,8 @@ export function Task(props: any) {
                     } />
             </Grid>
             <Grid item>
-                <p aria-multiline className={styles.p}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima assumenda eos eligendi nesciunt sint repellat quod dicta pariatur reiciendis in, ea totam laboriosam repellendus deleniti eveniet. Dolorum, facere incidunt.
+                <p aria-multiline className={!checked ? styles.p : styles.pChecked}>
+                    {props.texto}
                 </p>
             </Grid>
             <Grid item>

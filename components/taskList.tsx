@@ -1,11 +1,16 @@
+'use client'
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Task } from "./task";
 import styles from "./taskList.module.css";
+import { useContext } from "react";
+import { MyContext } from "@/app/context";
 
 export function TaskList() {
+    const tasks = useContext(MyContext);
+
     return (
         <Box sx=
             {
@@ -53,7 +58,7 @@ export function TaskList() {
                                 fontSize: '0.75rem'
                             }
                         }>
-                        1
+                        {tasks.length}
                     </Box>
                 </Grid>
                 <Grid item xs={8} />
@@ -88,15 +93,11 @@ export function TaskList() {
                     </Box>
                 </Grid>
             </Grid>
-            <List>
+            <List>{tasks.map((task) => (
                 <ListItem>
-                    <Task />
-                </ListItem>
-                <ListItem>
-                    <Task />
-                </ListItem>
-                <ListItem>
-                    <Task />
+                    <Task texto={task} />
+                </ListItem>))}
+                <ListItem><Task texto="sdafadsfad" />
                 </ListItem>
             </List>
         </Box>

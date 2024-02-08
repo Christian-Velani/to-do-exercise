@@ -5,16 +5,28 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import styles from "./newTask.module.css";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MyContext } from "@/app/context";
 
 export function NewTask() {
+    const tasks = useContext(MyContext);
     const [isFocused, setIsFocused] = useState(false);
     const [placeholder, setPlaceholder] = useState("Adicionar Atividade");
+    const [newTaskText, setNewTaskText] = useState("");
+
+    function handleCreateNewTask() {
+        if (newTaskText === '') { return }
+        tasks.push(newTaskText);
+        setNewTaskText('');
+        console.log(tasks);
+    }
 
     return (
         <Grid sx={{ marginTop: -5 }} className={styles.grid} container spacing={2}>
             <Grid item>
-                <OutlinedInput sx=
+                <OutlinedInput
+                    value={newTaskText}
+                    onChange={(event) => setNewTaskText(event.target.value)} sx=
                     {
                         {
                             color: '#808080',
@@ -49,7 +61,7 @@ export function NewTask() {
                 />
             </Grid>
             <Grid item>
-                <Button sx={
+                <Button onClick={handleCreateNewTask} sx={
                     { borderRadius: 2 }
                 }
                     className=
