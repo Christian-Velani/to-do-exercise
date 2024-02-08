@@ -8,7 +8,7 @@ import styles from './task.module.css'
 
 export function Task(props: any) {
     return (
-        <Grid className={styles.grid} container spacing={2} width={736}>
+        <Grid sx={{ width: "46rem" }} className={styles.grid} container spacing={2}>
             <Grid item>
                 <CheckBox
                     icon={

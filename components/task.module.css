@@ -1,9 +1,9 @@
 .grid {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     background-color: var(--gray-500);
     align-items: center;
     justify-content: center;
-    justify-self: center;
-    margin: auto;
 }
 
 .p {
