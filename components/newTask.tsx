@@ -4,7 +4,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import styles from "./newTask.module.css";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import Box from '@mui/material/Box';
 
 export function NewTask() {
     return (
@@ -13,14 +12,13 @@ export function NewTask() {
                 <OutlinedInput sx={{ color: '#808080' }}
                     className={styles.textField}
                     startAdornment={
-                        <Box sx={{ color: '#ffffff' }}>
-                            <InputAdornment disableTypography sx={{ color: "white" }}
-                                position="end">Descreva uma Ativadede
-                            </InputAdornment>
-                        </Box>}
+                        <InputAdornment disableTypography sx={{ color: "white" }}
+                            position="end">Descreva uma Ativadede
+                        </InputAdornment>}
                     placeholder="Adicionar Atividade"
                 />
-            </Grid><Grid item>
+            </Grid>
+            <Grid item>
                 <Button sx={
                     { borderRadius: 2 }
                 }
@@ -33,7 +31,8 @@ export function NewTask() {
                     {
                         <AddCircleOutlineIcon />
                     }>
-                    Criar</Button>
+                    Criar
+                </Button>
             </Grid>
         </Grid>)
 }

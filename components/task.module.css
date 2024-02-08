@@ -1,0 +1,12 @@
+.grid {
+    background-color: var(--gray-500);
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    margin: auto;
+}
+
+.p {
+    white-space: wrap;
+    max-width: 500px;
+}
