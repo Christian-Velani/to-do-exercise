@@ -13,4 +13,6 @@
 
 body {
   background-color: var(--gray-600);
+  margin: 0;
+  padding: 0;
 }

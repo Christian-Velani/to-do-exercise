@@ -1,60 +1,101 @@
-import Grid from '@mui/material/Grid';
-import CheckBox from '@mui/material/Checkbox';
-import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import IconButton from '@mui/material/IconButton';
-import styles from './task.module.css'
-import { useState } from 'react';
+import { Checkbox, IconButton, Box, Typography } from "@mui/material";
+import {
+  DeleteForeverOutlined,
+  RadioButtonUnchecked,
+  CheckCircle,
+} from "@mui/icons-material";
+import { useState } from "react";
+import { TaskModel } from "@/app/page";
 
+interface TaskProps {
+  checkBoxChange: (operator: string) => void;
+  deleteTask: (task: TaskModel, status: boolean) => void;
+  taskData: TaskModel;
+}
 
-export function Task(props: any) {
-    const [checked, isChecked] = useState(false);
+export default function Task({
+  checkBoxChange,
+  taskData,
+  deleteTask,
+}: TaskProps) {
+  const [checked, isChecked] = useState(false);
 
-    function handleCheckBoxChange() {
-        checked ? isChecked(false) : isChecked(true);
-    }
-
-    return (
-        <Grid sx={{ width: "46rem", borderRadius: "0.5rem" }} className={styles.grid} container spacing={2}>
-            <Grid item>
-                <CheckBox onChange={handleCheckBoxChange} checked={checked ? true : false}
-                    icon={
-                        <RadioButtonUncheckedIcon sx=
-                            {
-                                {
-                                    fontSize: '1.5rem',
-                                    color: "#4EA8DE",
-                                }
-                            } />
-                    }
-                    checkedIcon=
-                    {
-                        <CheckCircleIcon sx=
-                            {
-                                {
-                                    color: "#5E60CE",
-                                    fontSize: "1.5rem",
-                                }
-                            } />
-                    } />
-            </Grid>
-            <Grid item>
-                <p aria-multiline className={!checked ? styles.p : styles.pChecked}>
-                    {props.texto}
-                </p>
-            </Grid>
-            <Grid item>
-                <IconButton>
-                    <DeleteForeverOutlinedIcon sx=
-                        {
-                            {
-                                fontSize: "1.5rem",
-                                color: "#808080",
-                            }
-                        } />
-                </IconButton>
-            </Grid>
-        </Grid>
-    )
+  return (
+    <Box
+      width={"46rem"}
+      borderRadius={"0.5rem"}
+      display={"flex"}
+      marginTop={"0.5rem"}
+      marginBottom={"0.5rem"}
+      bgcolor={"#262626"}
+      justifyContent={"space-between"}
+      alignItems={"flex-start"}
+    >
+      <Checkbox
+        onChange={() => {
+          if (checked) {
+            isChecked(false);
+            checkBoxChange("-");
+          } else {
+            isChecked(true);
+            checkBoxChange("+");
+          }
+        }}
+        checked={checked ? true : false}
+        icon={
+          <RadioButtonUnchecked
+            sx={{
+              fontSize: "1.5rem",
+              color: "#4EA8DE",
+            }}
+          />
+        }
+        checkedIcon={
+          <CheckCircle
+            sx={{
+              color: "#5E60CE",
+              fontSize: "1.5rem",
+            }}
+          />
+        }
+      />
+      <Typography
+        aria-multiline
+        sx={
+          !checked
+            ? {
+                whiteSpace: "wrap",
+                maxWidth: "31.25rem",
+                fontFamily: "inherit",
+                fontSize: "0.875rem",
+                color: "#F2F2F2",
+                marginTop: "0.625rem",
+              }
+            : {
+                whiteSpace: "wrap",
+                maxWidth: "31.25rem",
+                fontFamily: "inherit",
+                fontSize: "0.875rem",
+                color: "#808080",
+                marginTop: "0.625rem",
+                textDecoration: "line-through",
+              }
+        }
+      >
+        {taskData.text}
+      </Typography>
+      <IconButton
+        onClick={() => {
+          deleteTask(taskData, checked);
+        }}
+      >
+        <DeleteForeverOutlined
+          sx={{
+            fontSize: "1.5rem",
+            color: "#808080",
+          }}
+        />
+      </IconButton>
+    </Box>
+  );
 }
